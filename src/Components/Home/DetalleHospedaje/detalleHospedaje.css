@@ -1,0 +1,6 @@
+.hotel__field {
+    background-color: var(--hotel-field);
+    border-radius: 1em;
+    padding-top: 1rem;
+
+}

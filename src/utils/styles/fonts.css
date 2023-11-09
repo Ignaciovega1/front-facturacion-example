@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif !important;
+}
+
+:root {
+    --box-color: #F5F5F5;
+    --text-color: #0E3748;
+    --bg-method-color: #C9C9C9;
+    --bg-method-color-opaco: rgba(255, 255, 255, 0.199);
+    --bg-method-color-hover: #219ebc;
+    --hr-color: rgba(255, 255, 255, 0.2);
+    --bg-confirmed-color: rgb(2, 47, 70, 0.5);
+    --text-table-color: rgba(0, 0, 0, 0.5);
+    --font-field-color: #C9C9C9;
+    --home-body-bg: #D9D9D9;
+    --hotel-field: rgb(203, 203, 203);
+}

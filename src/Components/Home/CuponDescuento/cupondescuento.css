@@ -1,0 +1,73 @@
+.cupon-input,
+.hidden {
+    visibility: hidden;
+    /* Otras propiedades necesarias para que tenga el mismo tamaño que si estuviera visible */
+}
+
+.cupon-input-visible,
+.visible {
+
+    visibility: visible;
+}
+
+.cuponDescuento {
+    padding-left: 1rem;
+    font-size: 1.5em;
+    white-space-collapse: discard;
+}
+
+.cuponDescuento p {
+    user-select: none;
+}
+
+.cupon-input {
+    width: 100%;
+    font-size: 0.8em;
+    font-weight: bold;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 1rem;
+}
+
+.cupon-input [type="text"] {
+    width: 60%;
+    height: 2em;
+    border-radius: 0.5em;
+    border: 1px solid var(--bg-method-color);
+    padding-left: 0.5em;
+    font-size: 1em;
+    font-weight: bold;
+    outline: none;
+}
+
+.btnGuardarCupon {
+    width: 30%;
+    height: 2em;
+    border-radius: 0.5em;
+    border: none;
+    background: var(--bg-method-color);
+    color: var(--text-color);
+    font-size: 1em;
+    font-weight: bold;
+    outline: none;
+    cursor: pointer;
+}
+
+/* Estilo al pasar sobre el botón (hover) */
+.btnGuardarCupon:hover {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.7), 0 0 20px rgba(33, 158, 188, 0.8);
+
+}
+
+/* Estilo al hacer clic en el botón (active) */
+.btnGuardarCupon:active {
+    background-color: #ddd !important;
+}
+
+
+@media (max-width: 768px) {
+    .cuponDescuento {
+        font-size: 1.2em;
+    }
+}

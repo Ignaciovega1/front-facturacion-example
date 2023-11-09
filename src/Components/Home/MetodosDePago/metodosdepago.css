@@ -1,0 +1,102 @@
+.box {
+    position: relative;
+    /* Añade esta línea */
+    width: 100%;
+    background: var(--box-color);
+    border-radius: 0.5em;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.2s ease-in;
+    border-radius: 1rem;
+}
+
+.metodoPagoTitle {
+    width: 100%;
+}
+
+.metodos_selectTitle {
+    width: 100%;
+    text-align: center;
+}
+
+.box .boxReady {
+    position: relative;
+}
+
+.metodoPagoTitle p {
+    padding-left: 1rem;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    color: var(--text-color);
+    font-size: 1.5rem;
+    font-weight: 600;
+    user-select: none;
+    border-bottom: 1px solid var(--hr-color);
+}
+
+
+.checked {
+
+    position: absolute;
+    display: none;
+    width: 60px;
+    height: 60px;
+    z-index: 999;
+    right: 0;
+}
+
+
+.boxReady .checked {
+    display: block;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+
+.checked img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    -webkit-user-drag: none;
+}
+
+.boxReady {
+    background-color: var(--bg-confirmed-color);
+    /* Cambia el color de fondo */
+    opacity: 0.9;
+    /* Ajusta la opacidad */
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+    /* Añade transiciones suaves */
+}
+
+
+.method.not-selected {
+    opacity: 0.5;
+}
+
+
+@media (max-width: 768px) {
+    .metodoPagoTitle p {
+        font-size: 1.2rem;
+        padding-right: 1rem;
+    }
+}
+
+.metodoPagoTitle {
+    position: relative;
+    /* Esto permite que los elementos absolutos hijos se posicionen en relación a este contenedor */
+    height: 20px;
+    /* Asegúrate de que este alto sea suficiente para tu texto */
+    /* Resto de tus estilos */
+}
+
+
+/* Puedes eliminar la visibilidad o display en base a la clase agregada a 'box' si es necesario */
+.boxReady .metodos_selectTitle {
+    display: none;
+    /* Esto ocultará "Seleccione un método de pago" cuando se haya seleccionado un método */
+}
+
+.box:not(.boxReady) .metodos_selected {
+    display: none;
+    /* Esto ocultará "Ha seleccionado X" cuando no se haya seleccionado un método */
+}

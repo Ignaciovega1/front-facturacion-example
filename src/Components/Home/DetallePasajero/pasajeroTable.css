@@ -1,0 +1,81 @@
+.PasajeroResume {
+    display: flex;
+}
+
+.PasajeroResume table {
+    width: 90%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    border-radius: 0.5em;
+    border: 1px solid var(--hr-color);
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.PasajeroResume th,
+.PasajeroResume td {
+    padding: 12px 15px;
+    border-bottom: 1px solid var(--hr-color);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    position: relative;
+}
+
+.PasajeroResume td {
+    border-right: 1px solid var(--hr-color);
+
+}
+
+.PasajeroResume th:last-child,
+.PasajeroResume td:last-child {
+    border-right: none;
+}
+
+.PasajeroResume tr:last-child th,
+.PasajeroResume tr:last-child td {
+    border-bottom: none;
+}
+
+.PasajeroResume tbody {
+    display: block;
+    height: 300px;
+    overflow-y: auto;
+}
+
+.PasajeroResume tbody::-webkit-scrollbar {
+    width: 8px;
+}
+
+.PasajeroResume tbody::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+}
+
+.PasajeroResume tbody::-webkit-scrollbar-thumb {
+    background-color: #0a4e5fb6;
+}
+
+.PasajeroResume tbody::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.PasajeroResume tbody::-webkit-scrollbar-thumb {
+    height: 50px;
+    width: 4px;
+}
+
+.PasajeroResume thead,
+.PasajeroResume tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+
+.PasajeroResume thead {
+    width: calc(100% - 6px);
+}
+
+.PasajeroResume table {
+    width: 90%;
+    margin-bottom: 1rem;
+}

@@ -1,0 +1,53 @@
+.metodoDePago__container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(150px, 0));
+    gap: 1rem;
+    padding-left: 1rem;
+    padding-bottom: 1rem;
+}
+
+.method {
+    width: 150px;
+    height: 100px;
+    overflow: hidden;
+    border-radius: 1em;
+    background: var(--bg-method-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.method img {
+    width: 100%;
+    height: 100%;
+    padding: 0.5rem;
+    object-fit: contain;
+    -webkit-user-drag: none;
+}
+
+
+
+.method:hover {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.7), 0 0 20px rgba(33, 158, 188, 0.8);
+    cursor: pointer;
+}
+
+
+
+
+
+.method.selected {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.7), 0 0 20px rgba(33, 158, 188, 0.8);
+}
+
+
+@media (max-width: 768px) {
+    .metodoDePago__container {
+        grid-template-columns: repeat(1, minmax(150px, 0));
+        justify-content: center;
+    }
+
+
+}

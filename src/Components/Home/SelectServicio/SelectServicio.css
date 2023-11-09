@@ -1,0 +1,19 @@
+.hotel__field {
+    background-color: var(--hotel-field);
+    border-radius: 1em;
+    padding-top: 1rem;
+
+}
+
+
+
+.hover-effect:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    /* Example hover effect to slightly enlarge the text */
+    /* You can add more styles you want to apply on hover */
+}
+
+.serviceNombre {
+    user-select: none;
+}
