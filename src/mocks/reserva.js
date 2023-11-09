@@ -1,56 +1,46 @@
 const reserva = {
-    "id": 5,
+    "id": 25,
     "detalles_json": {
         "DetalleHotel": {
-            "NombreHotel": "Buenos Aires Grand Hotel",
-            "SitioWebHotel": "www.buenosairesgrandhotel.com",
-            "TelefonoHotel": "+567890123",
-            "DireccionHotel": "Av. Corrientes 789",
-            "ServiciosHotel": "Piscina, Spa, Restaurante gourmet, Sala de Conferencias",
-            "ValoracionHotel": 4.7,
-            "DescripcionHotel": "Un hotel de lujo en Buenos Aires",
-            "CorreoElectronicoHotel": "info@buenosairesgrandhotel.com"
+            "NombreHotel": "Concepción Palace Hotel",
+            "SitioWebHotel": "www.concepcionpalacehotel.com",
+            "TelefonoHotel": "+987654321",
+            "DireccionHotel": "Av. Libertad 456",
+            "ServiciosHotel": "Restaurante, Bar, Servicio de Habitaciones",
+            "ValoracionHotel": 4,
+            "DescripcionHotel": "Un hotel céntrico en Concepción",
+            "CorreoElectronicoHotel": "info@concepcionpalacehotel.com"
         },
         "DetallePaquete": {
-            "FechaFin": "2023-09-15",
-            "FechaInicio": "2023-09-10",
+            "FechaFin": "2023-10-08",
+            "FechaInicio": "2023-10-03",
             "OfertaVuelo": 0,
-            "PrecioVuelo": 420,
-            "NombrePaquete": "Paquete Lima a Cusco",
-            "TotalPersonas": 3,
-            "DetallesPaquete": "Incluye vuelo y estancia en el Cusco Heritage Boutique",
-            "DescripcionPaquete": "Viaje desde Lima a Cusco",
-            "NombreCiudadOrigen": "Buenos Aires",
-            "NombreCiudadDestino": "Puerto Iguazú",
-            "NombreAeropuertoOrigen": "Aeropuerto Jorge Newbery",
-            "NombreAeropuertoDestino": "Aeropuerto Internacional Cataratas del Iguazú"
-
+            "PrecioVuelo": 320,
+            "NombrePaquete": "Paquete Buenos Aires a Puerto Iguazú",
+            "TotalPersonas": 1,
+            "DetallesPaquete": "Incluye vuelo y estancia en el Iguazú Falls Lodge",
+            "DescripcionPaquete": "Viaje desde Buenos Aires a Puerto Iguazú",
+            "NombreCiudadOrigen": "Concepción",
+            "NombreCiudadDestino": "Buenos Aires",
+            "NombreAeropuertoOrigen": "Aeropuerto Carriel Sur",
+            "NombreAeropuertoDestino": "Aeropuerto Internacional Ministro Pistarini"
         },
         "DetalleReserva": {
-            "IdUsuario": "snaranjo@utem.cl",
-            "Pasajeros": [
-                {
-                    "nombre": "Laura",
-                    "apellidos": "González",
-                    "rut": "18903456-4",
-                    "correo": "laura@example.com",
-                    "numero": "567890123"
-                }
-            ],
+            "IdUsuario": "usuario@ejemplo.com",
+            "Pasajeros": {},
+            "PrecioTotal": null,
             "EstadoReserva": "P",
-            "ServiciosAdicionales": {
-                "servicios": [
-                    "auto"
-                ]
-            }
+            "IdFechaPaquete": 12,
+            "ServiciosAdicionales": {}
         },
         "DetalleHabitacion": {
-            "PrecioNoche": 200,
+            "PrecioNoche": 80,
             "NombreOpcionHotel": "Habitación Individual",
-            "ServiciosHabitacion": "Wi-Fi, TV de pantalla plana, Baño de mármol, Desayuno gourmet",
-            "DescripcionHabitacion": "Habitación individual de lujo en el corazón de Buenos Aires."
+            "ServiciosHabitacion": "Wi-Fi, TV por cable, Servicio de habitaciones, Aire acondicionado",
+            "DescripcionHabitacion": "Habitación individual en el centro de Concepción"
         }
     }
 }
+
 
 export default reserva;

@@ -3,7 +3,7 @@ import './totalDeVuelo.css';
 import { GiCommercialAirplane } from 'react-icons/gi';
 import { FaFileInvoiceDollar } from 'react-icons/fa'; // Assuming this is the correct import
 
-export default function TotalDeVuelo({ detalleJson, selectedServices }) {
+export default function TotalDeVuelo({ detalleJson, selectedServices, onTotalPriceChange }) {
     const {
         DetalleHotel,
         DetallePaquete,
@@ -18,23 +18,18 @@ export default function TotalDeVuelo({ detalleJson, selectedServices }) {
     const [totalPrice, setTotalPrice] = useState(basePrice + initialTotalServicios);
 
     useEffect(() => {
-        // Calculate the new total price whenever selectedServices changes
+        // Calcula el nuevo total y luego invoca la función del padre
         const newTotalServicios = selectedServices.reduce((acc, service) => acc + service.precio, 0);
-        setTotalPrice(basePrice + newTotalServicios);
-    }, [selectedServices]); // Dependency array includes selectedServices
+        const newTotalPrice = basePrice + newTotalServicios;
+        setTotalPrice(newTotalPrice);
+
+        // Aquí invocas la función pasada por el padre para actualizar el precio total
+        onTotalPriceChange(newTotalPrice);
+    }, [selectedServices, basePrice, onTotalPriceChange]);
 
     return (
         <div className="box">
-            <div className="d-flex flex-row gap-1 totalVueloTitulo px-2 py-2 justify-content-between">
-                <div className="d-flex flex-column">
-                    <div className="d-flex flex-row">
-                        <FaFileInvoiceDollar className="mx-2" style={{ width: '2em', height: '2em' }} />
-                        <p className='h2 fw-bold'>Total de Vuelo</p>
-                    </div>
-                    <p className='h3 fw-bold mx-4'>${totalPrice.toLocaleString()}</p>
-                </div>
-                <GiCommercialAirplane size={48} />
-            </div>
+
             <div className="mx-3 my-2 d-flex flex-row justify-content-between">
                 <p className='h4 fw-bold text-nowrap text-truncate'>Paquete para {DetallePaquete.TotalPersonas} personas</p>
                 <p className='h3 fw-bold'>${basePrice.toLocaleString()}</p>
@@ -61,7 +56,16 @@ export default function TotalDeVuelo({ detalleJson, selectedServices }) {
             <div className="mx-3 my-2" style={{ visibility: selectedServices.length === 0 ? 'visible' : 'hidden' }}>
                 <p className='h6 text-muted'>No se han agregado servicios adicionales.</p>
             </div>
-
+            <div className="d-flex flex-row gap-1 totalVueloTitulo px-2 py-2 justify-content-between">
+                <div className="d-flex flex-column">
+                    <div className="d-flex flex-row">
+                        <FaFileInvoiceDollar className="mx-2" style={{ width: '2em', height: '2em' }} />
+                        <p className='h2 fw-bold'>Total de Vuelo</p>
+                    </div>
+                    <p className='h3 fw-bold mx-4'>${totalPrice.toLocaleString()}</p>
+                </div>
+                <GiCommercialAirplane size={48} />
+            </div>
 
         </div>
     );
