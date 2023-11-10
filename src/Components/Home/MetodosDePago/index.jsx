@@ -29,24 +29,32 @@ export default function MetodosDePago({ onMetodoChange, onCuponSubmit }) {
 
     return (
         <div className={`box ${selectedMetodo ? 'boxReady' : ''}`}>
-            <div className="checked">
-                <img src="/checked.svg" alt="" />
+            <div className="d-flex">
+                <div className="checked">
+                    <img src="/checked.svg" alt="" />
+                </div>
+                <div className="d-flex flex-row gap-1 align-items-center detallePasajeroTitle my-2 mx-2">
+                    <BsCreditCard className="mx-1 mb-4" style={{ width: '3em', height: '3em' }} />
+                    {!selectedMetodo ? (
+                        <span className='d-flex flex-row title-text '>
+                            <p className='txt-color'>{"Seleccione un método de pago"}</p>
+                        </span>
+                    ) : (
+                        <span className='d-flex flex-row title-text '>
+                            <p className=''>{`Ha seleccionado`}</p>
+                            <p className='txt-white'>{`${selectedMetodo.toUpperCase()}`} </p>
+                        </span>
+                    )}
+                </div>
             </div>
-            <div className="h6 fw-bold mb-5 d-flex flex-row align-items-center">
-                <BsCreditCard className="mx-4" style={{ width: '3em', height: '3em' }} />
-                {!selectedMetodo ? (
-                    <p className='m-0'>{"Seleccione un método de pago"}</p>
-                ) : (
-                    <p className='m-0'>{`Ha seleccionado ${selectedMetodo.toUpperCase()}`}</p>
-                )}
-            </div>
-
-
             <div className="metodoPagoContent mb-1">
                 <div className="metodoDePago__container">
                     <MetodosCard onMetodoChange={handleMetodoChange} />
                 </div>
-                <CuponDescuento onCuponSubmit={handleCuponSubmit} />
+                <div className={` ${selectedMetodo ? 'hidden' : ''}`}>
+                    <CuponDescuento onCuponSubmit={handleCuponSubmit} />
+                </div>
+
             </div>
         </div>
     )

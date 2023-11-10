@@ -37,7 +37,9 @@ const PasajeroFormulario = ({ numPasajeros, onFinalSubmit }) => {
         <>
             <div className="d-flex flex-row gap-1 align-items-center detallePasajeroTitle mt-2">
                 <GrGroup className="mx-3" style={{ width: '3em', height: '3em' }} />
-                <p>{`Ingrese los detalles del Pasajero ${currentPage}`}</p>
+                <p className='title-text txt-color'>
+                    {`Ingrese los detalles del Pasajero ${currentPage}`}
+                </p>
             </div>
 
             <div className="detallePasajeroContent">

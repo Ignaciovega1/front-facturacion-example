@@ -31,7 +31,7 @@ export default function TotalDeVuelo({ detalleJson, selectedServices, onTotalPri
         <div className="box">
 
             <div className="mx-3 my-2 d-flex flex-row justify-content-between">
-                <p className='h4 fw-bold text-nowrap text-truncate'>Paquete para {DetallePaquete.TotalPersonas} personas</p>
+                <p className='title-text txt-color'>Paquete para {DetallePaquete.TotalPersonas} personas</p>
                 <p className='h3 fw-bold'>${basePrice.toLocaleString()}</p>
             </div>
             <div className="serviciosAdicionales text-start px-3 h4 d-flex flex-column"
@@ -60,7 +60,7 @@ export default function TotalDeVuelo({ detalleJson, selectedServices, onTotalPri
                 <div className="d-flex flex-column">
                     <div className="d-flex flex-row">
                         <FaFileInvoiceDollar className="mx-2" style={{ width: '2em', height: '2em' }} />
-                        <p className='h2 fw-bold'>Total de Vuelo</p>
+                        <p className='txt select h2 fw-bold'>Total de Vuelo</p>
                     </div>
                     <p className='h3 fw-bold mx-4'>${totalPrice.toLocaleString()}</p>
                 </div>

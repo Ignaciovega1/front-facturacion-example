@@ -16,8 +16,13 @@ export default function DetalleHospedaje({ detalleJson }) {
     const cantDias = calcularDiasEntreFechas(DetallePaquete.FechaInicio, DetallePaquete.FechaFin);
     const cantNoches = cantDias - 1;
 
+    const [isChecked, setIsChecked] = useState(false);
+
     return (
-        <div className="box">
+        <div className={`box ${isChecked ? 'boxReady' : ''}`}>
+            <div className="checked">
+                <img src="/checked.svg" alt="" />
+            </div>
             <div className="d-flex flex-row gap-1 detallePasajeroTitle mt-2 mx-3">
                 <LuHotel className="" style={{ width: '3em', height: '3em' }} />
                 <p className='text-center d-flex justify-content-center align-items-center'> Detalles del hospedaje </p>

@@ -1,15 +1,3 @@
-.box {
-    position: relative;
-    /* Añade esta línea */
-    width: 100%;
-    background: var(--box-color);
-    border-radius: 0.5em;
-    display: flex;
-    flex-direction: column;
-    transition: all 0.2s ease-in;
-    border-radius: 1rem;
-}
-
 .metodoPagoTitle {
     width: 100%;
 }
@@ -36,37 +24,6 @@
 }
 
 
-.checked {
-
-    position: absolute;
-    display: none;
-    width: 60px;
-    height: 60px;
-    z-index: 999;
-    right: 0;
-}
-
-
-.boxReady .checked {
-    display: block;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
-}
-
-.checked img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    -webkit-user-drag: none;
-}
-
-.boxReady {
-    background-color: var(--bg-confirmed-color);
-    /* Cambia el color de fondo */
-    opacity: 0.9;
-    /* Ajusta la opacidad */
-    transition: background-color 0.3s ease, opacity 0.3s ease;
-    /* Añade transiciones suaves */
-}
 
 
 .method.not-selected {

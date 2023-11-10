@@ -118,11 +118,11 @@ const DetallePasajero = ({ onConfirmarPasajeros, numPasajeros, onCheckBoxChange 
                         <img src="/checked.svg" alt="" />
                     </div>
                     <div className="pasajeroConfirmed">
-                        <div className="d-flex flex-row gap-1 align-items-center detallePasajeroTitle mt-2">
+                        <div className="d-flex flex-row gap-1 align-items-center detallePasajeroTitle my-2 mx-2">
                             <img className="img-fluid" src="/suitcase.svg" alt="Suitcase" />
-                            <p>Pasajeros confirmados</p>
+                            <p className='title-text my-auto'>Pasajeros confirmados</p>
                         </div>
-                        <div className="PasajeroResume d-flex flex-column">
+                        <div className="PasajeroResume d-flex flex-column mt-4">
                             <TablaResumen pasajeros={pasajeros} />
                             <div className="d-flex flex-column gap-1 mx-auto">
                                 <div className="pasajero__check_terms">

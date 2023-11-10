@@ -176,9 +176,9 @@ export default function HomePage() {
     return (
         <>
             <Header title="Home" />
-            <div className="HomeBody w-100 h-100 d-flex flex-column">
-                <div className="HomeContent d-flex flex-row w-85 mx-auto my-4">
-                    <div className="d-flex flex-column gap-3 w-50 px-5">
+            <div className="HomeBody w-100 h-100 d-flex">
+                <div className="HomeContent d-flex flex-row w-90 mx-auto my-4">
+                    <div className="HomeLeft d-flex flex-column w-33 px-5 gap-4">
                         <MetodosDePago
                             onMetodoChange={handleMetodoChange}
                             onCuponSubmit={handleCuponSubmit}
@@ -191,35 +191,36 @@ export default function HomePage() {
                             numPasajeros={numPasajeros}
                             onCheckBoxChange={handleCheckboxChange}
                         />
-
-                        <DetalleHospedaje detalleJson={detalles_json} />
-
                     </div>
-                    <div className="d-flex flex-column gap-3 w-50 px-5">
-
+                    <div className="HomeLeft d-flex flex-column w-33 px-5 gap-4">
+                        <DetalleHospedaje detalleJson={detalles_json} />
+                        <DetalleCompra detalleJson={detalles_json} />
+                    </div>
+                    <div className="HomeLeft d-flex flex-column w-33 px-5 gap-4">
+                        <SelectServicio
+                            onToggleService={onToggleService}
+                            selectedServices={selectedServices}
+                        />
                         <TotalDeVuelo
                             detalleJson={detalles_json}
                             selectedServices={selectedServices}
                             onTotalPriceChange={handleTotalPriceChange}
                         />
-                        <DetalleCompra detalleJson={detalles_json} />
-                        <SelectServicio
-                            onToggleService={onToggleService}
-                            selectedServices={selectedServices}
-                        />
-                        <div className="d-flex flex-row gap-4">
+
+                        <div className="d-flex w-100 mx-auto">
                             <Button
                                 variant="primary"
-                                className="w-50 mx-auto"
+                                className="w-100 p-4 mx-auto"
                                 onClick={handleConfirmed}
                             >
-                                Confirmar
+                                <p className='text-center d-flex justify-content-center my-auto h3 fw-bold'>
+                                    Confirmar
+                                </p>
                             </Button>
-                            <Button variant="primary" className="w-50 mx-auto">Ir a pagar</Button>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div >
             <ModalComponent
                 title={"Error"}
                 show={showModal}
