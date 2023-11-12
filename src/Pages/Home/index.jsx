@@ -35,6 +35,19 @@ export default function HomePage() {
 
     const [data, setData] = useState([]); // Data de la reserva
 
+    useEffect(() => {
+        const handleBeforeUnload = (e) => {
+            e.preventDefault();
+            e.returnValue = 'Se perderá toda la información ingresada y su reserva quedará en cancelada, ¿está seguro de que desea salir?';
+            return e.returnValue;
+        };
+
+        window.addEventListener('beforeunload', handleBeforeUnload);
+
+        return () => {
+            window.removeEventListener('beforeunload', handleBeforeUnload);
+        };
+    }, []);
 
     // Toggle service selection based on the entire object
     const onToggleService = (service) => {
@@ -132,13 +145,12 @@ export default function HomePage() {
 
     const handleAcceptModal = () => {
         console.log("Botón Aceptar presionado");
-        console.log("Debo tener un método POST que actualiza: ", data);
+        console.log("Debo tener un método POST que crea: ", data);
         if (metodoDePagoSeleccionado === 'webpay') {
             window.location.href = 'http://localhost:3000/webpay';
         } else if (metodoDePagoSeleccionado === 'paypal') {
             window.location.href = 'http://localhost:3000/paypal';
         }
-        // setShowModal(false);
     };
 
     return (
