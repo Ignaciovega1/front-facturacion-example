@@ -48,9 +48,7 @@ const PasajeroFormulario = ({ numPasajeros, onFinalSubmit }) => {
                         <div
                             key={index}
                             className={`cardPasajero ${index}`}
-                            style={{
-                                display: index + 1 === currentPage ? 'block' : 'none',
-                            }}
+                            style={{ display: index + 1 === currentPage ? 'block' : 'none' }}
                         >
                             <label htmlFor={`nombres-${index}`}>Nombres</label>
                             <input
@@ -63,10 +61,52 @@ const PasajeroFormulario = ({ numPasajeros, onFinalSubmit }) => {
                                 required
                             />
 
-                            {/* Repite para apellidos, rut, correo y número */}
-                            {/* ... */}
+                            <label htmlFor={`apellidos-${index}`}>Apellidos</label>
+                            <input
+                                type="text"
+                                id={`apellidos-${index}`}
+                                name={`apellidos-${index}`}
+                                onChange={(e) => handleChange(index, 'apellidos', e.target.value)}
+                                value={pasajero.apellidos}
+                                autoComplete="off"
+                                required
+                            />
+
+                            <label htmlFor={`rut-${index}`}>RUT</label>
+                            <input
+                                type="text"
+                                id={`rut-${index}`}
+                                name={`rut-${index}`}
+                                onChange={(e) => handleChange(index, 'rut', e.target.value)}
+                                value={pasajero.rut}
+                                autoComplete="off"
+                                required
+                            />
+
+                            <label htmlFor={`correo-${index}`}>Correo</label>
+                            <input
+                                type="email"
+                                id={`correo-${index}`}
+                                name={`correo-${index}`}
+                                onChange={(e) => handleChange(index, 'correo', e.target.value)}
+                                value={pasajero.correo}
+                                autoComplete="off"
+                                required
+                            />
+
+                            <label htmlFor={`numero-${index}`}>Número</label>
+                            <input
+                                type="text"
+                                id={`numero-${index}`}
+                                name={`numero-${index}`}
+                                onChange={(e) => handleChange(index, 'numero', e.target.value)}
+                                value={pasajero.numero}
+                                autoComplete="off"
+                                required
+                            />
                         </div>
                     ))}
+
 
                     <div className="botones">
                         <button type="button" onClick={handlePreviousPage} disabled={currentPage === 1}>
@@ -88,3 +128,4 @@ const PasajeroFormulario = ({ numPasajeros, onFinalSubmit }) => {
 };
 
 export default PasajeroFormulario;
+

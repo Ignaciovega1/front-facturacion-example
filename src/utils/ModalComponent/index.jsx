@@ -17,19 +17,13 @@ const ModalComponent = ({ title, show, handleClose, handleAccept, bodyContent, b
             </Modal.Header>
             <Modal.Body>{bodyContent}</Modal.Body>
             <Modal.Footer>
-                {error ? (
-                    <Button variant={closeButtonVariant} onClick={handleClose}>
-                        Cerrar
+                <Button variant={closeButtonVariant} onClick={handleClose}>
+                    Cerrar
+                </Button>
+                {!error && (
+                    <Button variant={acceptButtonVariant} onClick={handleAccept}>
+                        Aceptar
                     </Button>
-                ) : (
-                    <>
-                        <Button variant={closeButtonVariant} onClick={handleClose}>
-                            Cerrar
-                        </Button>
-                        <Button variant={acceptButtonVariant} onClick={handleAccept}>
-                            Aceptar
-                        </Button>
-                    </>
                 )}
             </Modal.Footer>
         </Modal>
@@ -40,7 +34,7 @@ ModalComponent.propTypes = {
     title: PropTypes.string.isRequired,
     show: PropTypes.bool.isRequired,
     handleClose: PropTypes.func.isRequired,
-    handleAccept: PropTypes.func.isRequired,
+    handleAccept: PropTypes.func,
     bodyContent: PropTypes.node.isRequired,
     backdrop: PropTypes.oneOfType([PropTypes.bool, PropTypes.oneOf(['static'])]),
     closeButtonVariant: PropTypes.string,
@@ -49,7 +43,7 @@ ModalComponent.propTypes = {
 };
 
 ModalComponent.defaultProps = {
-    backdrop: true,
+    backdrop: 'static',
     closeButtonVariant: 'secondary',
     acceptButtonVariant: 'primary',
     error: false,

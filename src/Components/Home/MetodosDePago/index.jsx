@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import './metodosdepago.css'
 
@@ -13,12 +13,14 @@ export default function MetodosDePago({ onMetodoChange, onCuponSubmit }) {
 
     const handleMetodoChange = (metodo) => {
         setSelectedMetodo((prevSelectedMetodo) => (prevSelectedMetodo === metodo ? null : metodo));
-
-        // Notificar al padre sobre el cambio en el método de pago
-        if (onMetodoChange) {
-            onMetodoChange(metodo);
-        }
     };
+
+    useEffect(() => {
+        if (onMetodoChange) {
+            onMetodoChange(selectedMetodo);
+        }
+    }, [selectedMetodo, onMetodoChange]);
+
 
     const handleCuponSubmit = (cuponCode) => {
         // Notificar al padre sobre el código de cupón enviado

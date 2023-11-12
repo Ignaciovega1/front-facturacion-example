@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useReft } from 'react';
 
 import Header from '../../utils/Header';
-import { Button } from 'react-bootstrap';
+import { Button, Modal } from 'react-bootstrap';
 
 import './home.css';
 import MetodosDePago from '../../Components/Home/MetodosDePago';
@@ -32,7 +32,8 @@ export default function HomePage() {
     const [total, setTotal] = useState(0);
 
     const [showModal, setShowModal] = useState(false); // Mostrar u ocultar modal
-    const [modalBody, setModalBody] = useState(null); // Contenido del modal
+
+    const [data, setData] = useState([]); // Data de la reserva
 
 
     // Toggle service selection based on the entire object
@@ -51,16 +52,25 @@ export default function HomePage() {
     };
 
     useEffect(() => {
-    }, [selectedServices]);
+        if (isConfirmed && isMethod) {
+            console.log('Se puede pagar!');
+        }
+    }, [isConfirmed, isMethod]);
 
     const handleConfirmarPasajeros = (pasajeros) => {
-        console.log('Confirmar pasajeros: ', pasajeros);
         setConfirmados(pasajeros);
     };
 
     const handleMetodoChange = (metodo) => {
-        setIsMethod(true);
-        setMetodoDePagoSeleccionado(metodo);
+        if (metodo === null) {
+            setMetodoDePagoSeleccionado('');
+            setIsMethod(false);
+
+        } else {
+            // Manejar el caso cuando hay un método seleccionado
+            setIsMethod(true);
+            setMetodoDePagoSeleccionado(metodo);
+        }
     };
 
     const handleCuponSubmit = (cuponCode) => {
@@ -79,12 +89,6 @@ export default function HomePage() {
         setIsConfirmed(value);
     }
 
-    useEffect(() => {
-        console.log('isConfirmed: ', isConfirmed);
-    }, [isConfirmed]);
-
-
-
     const handleConfirmed = () => {
         if (isConfirmed && isMethod) {
             const data = [
@@ -100,78 +104,42 @@ export default function HomePage() {
                     "total": total,
                 }
             ];
-            console.log("Debo tener un método POST que actualiza: ", data);
-            ModalSuccessBoth();
+            setData(data);
+            setShowModal(true);
         } else if (!isConfirmed && isMethod) {
-            console.log('No se puede confirmar la compra falta confirmar pasajeros');
-            ModalErrorPasajeros();
+            console.log('No se puede confirmar la compra falta confirmar pasajeros', isConfirmed, isMethod);
+            // ModalErrorPasajeros();
         } else if (!isMethod && isConfirmed) {
             console.log('No se puede confirmar la compra falta seleccionar método de pago');
-            ModalErrorPayment();
+            // ModalErrorPayment();
         } else {
             console.log('No se puede confirmar la compra falta seleccionar método de pago y confirmar pasajeros');
-            ModalErrorBoth();
+            // ModalErrorBoth();
         }
     };
 
-    const ModalErrorPayment = () => {
-
-        const MethodModalBody = isMethod ? (
+    const modalContent = (
+        <>
             <div className="d-flex flex-column gap-3 w-100 px-5">
                 <h5 className="text-center">Método de pago seleccionado: {metodoDePagoSeleccionado}</h5>
                 <h5 className="text-center">Total a pagar: {total}</h5>
             </div>
-        ) : (
-            <div className="d-flex">
-                <h5 className="">Seleccione un método de pago</h5>
-            </div>
-        );
-        setModalBody(MethodModalBody);
-        setShowModal(true);
-    };
-
-    const ModalErrorPasajeros = () => {
-        const PasajerosModalBody = isConfirmed ? (
             <div className="d-flex flex-column gap-3 w-100 px-5">
-                <h5 className="text-center">Pasajeros confirmados: {confirmados.length}</h5>
+                <TablaResumen pasajeros={confirmados} />
             </div>
-        ) : (
-            <div className="d-flex">
-                <h5 className="">Confirme los pasajeros</h5>
-            </div>
-        );
-        setModalBody(PasajerosModalBody);
-        setShowModal(true);
+        </>
+    );
+
+    const handleAcceptModal = () => {
+        console.log("Botón Aceptar presionado");
+        console.log("Debo tener un método POST que actualiza: ", data);
+        if (metodoDePagoSeleccionado === 'webpay') {
+            window.location.href = 'http://localhost:3000/webpay';
+        } else if (metodoDePagoSeleccionado === 'paypal') {
+            window.location.href = 'http://localhost:3000/paypal';
+        }
+        // setShowModal(false);
     };
-
-    const ModalErrorBoth = () => {
-        const BothModalBody = (
-            <div className="d-flex flex-column gap-3 w-100 px-5">
-                <h5 className="text-center">Seleccione un método de pago</h5>
-                <h5 className="text-center">Confirme los pasajeros</h5>
-            </div>
-        );
-        setModalBody(BothModalBody);
-        setShowModal(true);
-    };
-
-    const ModalSuccessBoth = () => {
-        const BothModalBody = (
-            <>
-                <div className="d-flex flex-column gap-3 w-100 px-5">
-                    <h5 className="text-center">Método de pago seleccionado: {metodoDePagoSeleccionado}</h5>
-                    <h5 className="text-center">Total a pagar: {total}</h5>
-                </div>
-                <div className="d-flex flex-column gap-3 w-100 px-5">
-                    <TablaResumen pasajeros={confirmados} />
-                </div>
-            </>
-        );
-        setModalBody(BothModalBody);
-        setShowModal(true);
-    };
-
-
 
     return (
         <>
@@ -210,36 +178,26 @@ export default function HomePage() {
                         <div className="d-flex w-100 mx-auto">
                             <Button
                                 variant="primary"
-                                className="w-100 p-4 mx-auto"
+                                className={`w-100 p4 mx-auto ${isConfirmed && isMethod ? '' : 'disabled'}`}
                                 onClick={handleConfirmed}
                             >
                                 <p className='text-center d-flex justify-content-center my-auto h3 fw-bold'>
-                                    Confirmar
+                                    {!isMethod ? "Seleccione un método de pago" : !isConfirmed ? "Confirme los pasajeros" : "Confirmar compra"}
                                 </p>
+
                             </Button>
                         </div>
                     </div>
                 </div>
             </div >
             <ModalComponent
-                title={"Error"}
+                title="Título del Modal"
                 show={showModal}
                 handleClose={() => setShowModal(false)}
-                bodyContent={modalBody || ''}
+                handleAccept={handleAcceptModal}
+                bodyContent={modalContent}
                 closeButtonVariant="danger"
                 acceptButtonVariant="success"
-                handleAccept={ModalErrorPayment}
-                error={!isMethod}
-            />
-            <ModalComponent
-                title={"Confirmando..."}
-                show={showModal}
-                handleClose={() => setShowModal(false)}
-                bodyContent={modalBody || ''}
-                closeButtonVariant="danger"
-                acceptButtonVariant="success"
-                handleAccept={ModalErrorPasajeros}
-                error={!isConfirmed}
             />
         </>
     )

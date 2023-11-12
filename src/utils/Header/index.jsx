@@ -10,7 +10,7 @@ export default function Header({ title, logo }) {
     return (
         <header>
             <div className="title">
-                <Link to="/">
+                <a href="https://agendamiento.lumonidy.studio" rel="noopener noreferrer">
                     {logo ? (
                         <div className="img-logo">
                             <img src={logo} alt="Logo" />
@@ -21,22 +21,20 @@ export default function Header({ title, logo }) {
                         </div>
                     )}
                     <h1>{title}</h1>
-                </Link>
+                </a>
             </div>
 
             <nav>
                 <ul>
                     {routes.slice(1).map((route, index) => (
-
-
                         <li key={index}>
                             <Link to={route.path}>{route.text}</Link>
                         </li>
                     ))}
-
                 </ul>
             </nav>
-        </header >
+        </header>
+
     );
 };
 
