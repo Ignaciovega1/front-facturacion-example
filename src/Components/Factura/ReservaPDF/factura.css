@@ -1,0 +1,100 @@
+.invoice-container {
+    font-family: 'Arial', sans-serif;
+    max-width: 800px;
+    margin: auto;
+    border: 1px solid #000;
+    padding: 15px;
+}
+
+.content-wrapper {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #000;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+
+.content-image img {
+    width: 135px;
+    height: 135px;
+}
+
+.vertical-line {
+    border-left: 2px solid #000;
+    height: 100px;
+    margin: 0 20px;
+}
+
+.content-text h5 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.content-text p {
+    margin: 0;
+    font-size: 16px;
+}
+
+.additional-info {
+    text-align: right;
+    margin-bottom: 15px;
+}
+
+.additional-info h6 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.cliente p {
+    margin: 0;
+    font-size: 14px;
+}
+
+.table-factura {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 15px;
+}
+
+.table-factura th,
+.table-factura td {
+    border: 1px solid #000;
+    padding: 5px;
+    text-align: left;
+}
+
+.table-factura th {
+    background-color: #f2f2f2;
+}
+
+.invoice-summary {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.invoice-totals>div {
+    text-align: right;
+    margin-left: 20px;
+}
+
+.invoice-totals p {
+    margin: 0;
+    font-size: 14px;
+}
+
+.net-total p,
+.iva-total p,
+.total-iva p {
+    padding: 2px 5px;
+}
+
+.total-iva {
+    border-top: 2px solid #000;
+    font-weight: bold;
+}
+
+/* Adjustments may be needed for exact spacing and alignment */

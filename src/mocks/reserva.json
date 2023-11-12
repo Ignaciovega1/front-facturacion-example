@@ -1,4 +1,4 @@
-const reserva = {
+{
     "id": 25,
     "detalles_json": {
         "DetalleHotel": {
@@ -47,5 +47,3 @@ const reserva = {
         }
     }
 }
-
-export default reserva;
