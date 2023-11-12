@@ -156,7 +156,7 @@ export default function HomePage() {
     return (
         <>
             <Header title="Home" />
-            <div className="HomeBody w-100 h-100 d-flex">
+            <div className="HomeBody w-100 h-100 d-flex flex-column">
                 <div className="HomeContent d-flex flex-row w-90 mx-auto my-4">
                     <div className="HomeLeft d-flex flex-column w-33 px-5 gap-4">
                         <MetodosDePago
@@ -187,7 +187,10 @@ export default function HomePage() {
                             onTotalPriceChange={handleTotalPriceChange}
                         />
 
-                        <div className="d-flex w-100 mx-auto">
+                        <div className="d-flex w-100 mx-auto flex-column gap-2">
+                            asepto terminoz
+                            {/* aquí iría un componente término por ejemplo, podría ser una función interna
+                            o un componente aparte. Yo creo que mejro una función interna. */}
                             <Button
                                 variant="primary"
                                 className={`w-100 p4 mx-auto ${isConfirmed && isMethod ? '' : 'disabled'}`}
@@ -201,6 +204,7 @@ export default function HomePage() {
                         </div>
                     </div>
                 </div>
+
             </div >
             <ModalComponent
                 title="Título del Modal"
