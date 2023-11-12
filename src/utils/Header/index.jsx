@@ -24,6 +24,7 @@ export default function Header({ title, logo }) {
                 </a>
             </div>
 
+            {/* si yo quito el nav me quito las rutas de navegacion */}
             <nav>
                 <ul>
                     {routes.slice(1).map((route, index) => (
