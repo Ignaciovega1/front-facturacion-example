@@ -169,25 +169,27 @@ export default function HomePage() {
             <Header title="Home" />
             <div className="HomeBody w-100 h-100 d-flex flex-column">
                 <div className="HomeContent d-flex flex-row w-90 mx-auto my-4">
-                    <div className="HomeLeft d-flex flex-column w-33 px-5 gap-4">
+                    {/* Primera Columna */}
+                    <div className="HomeColumn d-flex flex-column w-33 px-5 gap-4">
                         <MetodosDePago
                             onMetodoChange={handleMetodoChange}
                             onCuponSubmit={handleCuponSubmit}
-
-                        >
-                        </MetodosDePago>
-
+                        />
                         <DetallePasajero
                             onConfirmarPasajeros={handleConfirmarPasajeros}
                             numPasajeros={numPasajeros}
                             onCheckBoxChange={handleCheckboxChange}
                         />
                     </div>
-                    <div className="HomeLeft d-flex flex-column w-33 px-5 gap-4">
+
+                    {/* Segunda Columna */}
+                    <div className="HomeColumn d-flex flex-column w-33 px-5 gap-4">
                         <DetalleHospedaje detalleJson={detalles_json} />
                         <DetalleCompra detalleJson={detalles_json} />
                     </div>
-                    <div className="HomeLeft d-flex flex-column w-33 px-5 gap-4">
+
+                    {/* Tercera Columna */}
+                    <div className="HomeColumn d-flex flex-column w-33 px-5 gap-4">
                         <SelectServicio
                             onToggleService={onToggleService}
                             selectedServices={selectedServices}
@@ -197,13 +199,11 @@ export default function HomePage() {
                             selectedServices={selectedServices}
                             onTotalPriceChange={handleTotalPriceChange}
                         />
-
-                        <div className="d-flex w-100 mx-auto flex-column gap-2">
+                        <div className="TermsAndConfirm d-flex w-100 mx-auto flex-column gap-2">
                             <div className="terms-confirmation">
                                 <input type="checkbox" id="acceptTerms" checked={hasAcceptedTerms} onChange={handleAcceptTerms} />
                                 <label htmlFor="acceptTerms">Acepto los términos y condiciones</label>
                             </div>
-
                             <Button
                                 variant="primary"
                                 className={`w-100 p-4 mx-auto ${hasAcceptedTerms && isMethod ? '' : 'disabled'}`}
@@ -217,8 +217,7 @@ export default function HomePage() {
                         </div>
                     </div>
                 </div>
-
-            </div >
+            </div>
             <ModalComponent
                 title="Título del Modal"
                 show={showModal}
@@ -230,4 +229,5 @@ export default function HomePage() {
             />
         </>
     )
+
 }
