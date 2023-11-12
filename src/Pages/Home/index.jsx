@@ -29,6 +29,8 @@ export default function HomePage() {
     const [selectedServices, setSelectedServices] = useState([]);
     const [isConfirmed, setIsConfirmed] = useState(false);
     const [isMethod, setIsMethod] = useState(false);
+    const [hasAcceptedTerms, setHasAcceptedTerms] = useState(false);
+
     const [total, setTotal] = useState(0);
 
     const [showModal, setShowModal] = useState(false); // Mostrar u ocultar modal
@@ -89,6 +91,11 @@ export default function HomePage() {
     const handleCuponSubmit = (cuponCode) => {
         setCuponCode(cuponCode);
     };
+
+    const handleAcceptTerms = (e) => {
+        setHasAcceptedTerms(e.target.checked);
+    };
+
 
     const handleServiceSelection = (newSelectedServices) => {
         setSelectedServices(newSelectedServices);
@@ -153,6 +160,10 @@ export default function HomePage() {
         }
     };
 
+    const buttonText = !isMethod ? "Seleccione un método de pago" :
+        !isConfirmed ? "Confirme los pasajeros" :
+            !hasAcceptedTerms ? "Acepte los términos para continuar" :
+                "Confirmar compra";
     return (
         <>
             <Header title="Home" />
@@ -188,18 +199,20 @@ export default function HomePage() {
                         />
 
                         <div className="d-flex w-100 mx-auto flex-column gap-2">
-                            asepto terminoz
-                            {/* aquí iría un componente término por ejemplo, podría ser una función interna
-                            o un componente aparte. Yo creo que mejro una función interna. */}
+                            <div className="terms-confirmation">
+                                <input type="checkbox" id="acceptTerms" checked={hasAcceptedTerms} onChange={handleAcceptTerms} />
+                                <label htmlFor="acceptTerms">Acepto los términos y condiciones</label>
+                            </div>
+
                             <Button
                                 variant="primary"
-                                className={`w-100 p4 mx-auto ${isConfirmed && isMethod ? '' : 'disabled'}`}
+                                className={`w-100 p-4 mx-auto ${hasAcceptedTerms && isMethod ? '' : 'disabled'}`}
                                 onClick={handleConfirmed}
+                                disabled={!hasAcceptedTerms || !isMethod}
                             >
                                 <p className='text-center d-flex justify-content-center my-auto h3 fw-bold'>
-                                    {!isMethod ? "Seleccione un método de pago" : !isConfirmed ? "Confirme los pasajeros" : "Confirmar compra"}
+                                    {buttonText}
                                 </p>
-
                             </Button>
                         </div>
                     </div>
