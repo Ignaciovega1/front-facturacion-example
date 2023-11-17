@@ -209,6 +209,7 @@ export default function HomePage() {
                                 className={`w-100 p-4 mx-auto ${hasAcceptedTerms && isMethod ? '' : 'disabled'}`}
                                 onClick={handleConfirmed}
                                 disabled={!hasAcceptedTerms || !isMethod}
+                                style={{ backgroundColor: hasAcceptedTerms && isMethod ? 'orange' : 'grey' }}
                             >
                                 <p className='text-center d-flex justify-content-center my-auto h3 fw-bold'>
                                     {buttonText}

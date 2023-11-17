@@ -28,10 +28,26 @@ const PasajeroFormulario = ({ numPasajeros, onFinalSubmit }) => {
         setCurrentPage((prevPage) => Math.min(prevPage + 1, numPasajeros));
     };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        onFinalSubmit(pasajeros);
+    const handleSubmit = () => {
+        // Verificar expresiones regulares antes de enviar el formulario
+        const isValid = pasajeros.every(
+            (pasajero) => rutRegex.test(pasajero.rut) && emailRegex.test(pasajero.correo)
+        );
+
+        if (isValid) {
+            onFinalSubmit(pasajeros);
+        } else {
+            // Muestra un mensaje de error o toma la acción adecuada
+            console.log('Verifica que todos los campos cumplan con las validaciones.');
+        }
     };
+
+    const isPasajeroIncomplete = (pasajero) => {
+        return Object.values(pasajero).some((value) => value.trim() === '');
+    };
+
+    const rutRegex = /^\d{1,2}\.\d{3}\.\d{3}[-][0-9kK]{1}$/;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     return (
         <>
@@ -81,6 +97,7 @@ const PasajeroFormulario = ({ numPasajeros, onFinalSubmit }) => {
                                 value={pasajero.rut}
                                 autoComplete="off"
                                 required
+                                pattern={rutRegex.source}
                             />
 
                             <label htmlFor={`correo-${index}`}>Correo</label>
@@ -92,6 +109,7 @@ const PasajeroFormulario = ({ numPasajeros, onFinalSubmit }) => {
                                 value={pasajero.correo}
                                 autoComplete="off"
                                 required
+                                pattern={emailRegex.source}
                             />
 
                             <label htmlFor={`numero-${index}`}>Número</label>
@@ -115,8 +133,9 @@ const PasajeroFormulario = ({ numPasajeros, onFinalSubmit }) => {
                         <span>Pasajero {currentPage}</span>
                         <button
                             type="button"
-                            onClick={currentPage === numPasajeros ? handleSubmit : handleNextPage}
+                            onClick={() => (currentPage === numPasajeros ? handleSubmit() : handleNextPage())}
                             className={currentPage === numPasajeros ? 'confirmButton' : ''}
+                            disabled={isPasajeroIncomplete(pasajeros[currentPage - 1])}
                         >
                             {currentPage === numPasajeros ? 'Confirmar Pasajeros' : 'Siguiente Pasajero'}
                         </button>
