@@ -9,7 +9,7 @@ function App() {
   const [modalBody, setModalBody] = useState(null);
   const [showInactivityModal, setShowInactivityModal] = useState(false);
 
-  const inactivityTimeout = 1 * 60 * 1000; // 5 minutos
+  const inactivityTimeout = 5 * 60 * 1000; // 5 minutos
   const inactivityTimerRef = useRef(null);
 
   const handleActivity = () => {
