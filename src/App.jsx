@@ -1,24 +1,21 @@
-import React, { useEffect, useState } from 'react'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import './utils/styles/fonts.css'
+import React, { useEffect, useState, useRef } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import './utils/styles/fonts.css';
 import ModalComponent from './Components/ModalComponent';
-
-import { routes } from './routes/routes'
+import { routes } from './routes/routes';
 
 function App() {
-
   const [showModal, setShowModal] = useState(false);
   const [modalBody, setModalBody] = useState(null);
   const [showInactivityModal, setShowInactivityModal] = useState(false);
 
-  const inactivityTimeout = 5 * 60 * 1000;
-
-  let inactivityTimer;
+  const inactivityTimeout = 1 * 60 * 1000; // 5 minutos
+  const inactivityTimerRef = useRef(null);
 
   const handleActivity = () => {
-    clearTimeout(inactivityTimer);
-    inactivityTimer = setTimeout(() => {
-      const modalBody = (
+    clearTimeout(inactivityTimerRef.current);
+    inactivityTimerRef.current = setTimeout(() => {
+      const modalBodyContent = (
         <div>
           <i className="bi bi-hourglass-split d-flex justify-content-center fs-1"></i>
           <div>
@@ -28,35 +25,37 @@ function App() {
             </div>
           </div>
         </div>
-      )
-      setModalBody(modalBody);
+      );
+      setModalBody(modalBodyContent);
       setShowInactivityModal(true);
     }, inactivityTimeout);
   };
 
   useEffect(() => {
-    handleActivity(); // Inicializa el temporizador de inactividad
-    window.addEventListener('mousemove', handleActivity);
-    window.addEventListener('keydown', handleActivity);
+    const handleMouseMove = () => handleActivity();
+    const handleKeyDown = () => handleActivity();
+
+    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('keydown', handleKeyDown);
+
+    // Inicializar el temporizador de inactividad
+    handleActivity();
 
     return () => {
-      window.removeEventListener('mousemove', handleActivity);
-      window.removeEventListener('keydown', handleActivity);
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('keydown', handleKeyDown);
+      clearTimeout(inactivityTimerRef.current); // Limpiar el temporizador en la limpieza del efecto
     };
   }, []);
 
   const handleCloseModal = () => {
     setShowModal(false);
     setShowInactivityModal(false);
-    handleActivity(); // Reinicia el temporizador cuando se cierra el modal
+    handleActivity(); // Reiniciar el temporizador cuando se cierra el modal
   };
 
-
-
   return (
-
     <Router>
-
       <ModalComponent
         title="Inactividad"
         show={showInactivityModal}
@@ -68,18 +67,13 @@ function App() {
         error
       />
 
-
       <Routes>
         {routes.map((route, index) => (
-          <Route
-            key={index}
-            path={route.path}
-            element={<route.component />}
-          />
+          <Route key={index} path={route.path} element={<route.component />} />
         ))}
       </Routes>
     </Router>
-  )
+  );
 }
 
-export default App
+export default App;
