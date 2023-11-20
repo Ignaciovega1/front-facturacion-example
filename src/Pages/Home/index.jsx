@@ -93,7 +93,9 @@ export default function HomePage() {
     };
 
     const handleAcceptTerms = (e) => {
+
         setHasAcceptedTerms(e.target.checked);
+
     };
 
 
@@ -206,9 +208,9 @@ export default function HomePage() {
                             </div>
                             <Button
                                 variant="primary"
-                                className={`w-100 p-4 mx-auto ${hasAcceptedTerms && isMethod ? '' : 'disabled'}`}
+                                className={`w-100 p-4 mx-auto ${!hasAcceptedTerms && isMethod && buttonText === "Confirmar compra" ? 'disabled' : ''}`}
                                 onClick={handleConfirmed}
-                                disabled={!hasAcceptedTerms || !isMethod}
+                                disabled={!hasAcceptedTerms || !isMethod || buttonText !== "Confirmar compra"}
                                 style={{ backgroundColor: buttonText === "Confirmar compra" ? 'orange' : 'grey' }}
                             >
                                 <p className='text-center d-flex justify-content-center my-auto h3 fw-bold'>
