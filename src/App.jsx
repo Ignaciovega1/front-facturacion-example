@@ -19,7 +19,7 @@ function App() {
         <div>
           <i className="bi bi-hourglass-split d-flex justify-content-center fs-1"></i>
           <div>
-            <p>Parece que has estado mucho tiempo inactivo</p>
+            <p>Parece que has estado mucho tiempo inactivo.</p>
             <div className="modalContent">
               <p>Recuerda que hay más pasajeros esperando por sus viajes</p>
             </div>
