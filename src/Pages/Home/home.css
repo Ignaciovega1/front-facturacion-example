@@ -11,6 +11,8 @@
 .HomeContent {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+    /* Añadido para permitir que las columnas se envuelvan en pantallas más estrechas */
     width: 100%;
     height: calc(90vh - 5px);
     margin: 0 auto;
@@ -20,7 +22,8 @@
 .HomeColumn {
     display: flex;
     flex-direction: column;
-    width: 33%;
+    width: 100%;
+    /* Cambiado a 100% para dispositivos móviles */
     height: 100%;
     margin: 0 auto;
     overflow-y: auto;
@@ -32,4 +35,26 @@
     display: flex;
     flex-direction: column;
     gap: 2px;
+}
+
+@media (min-width: 768px) {
+    .HomeColumn {
+        width: 33.33%;
+    }
+}
+
+@media (max-width: 1375px) {
+
+    .HomeContent {
+
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    .HomeColumn {
+        width: 100%;
+        margin-top: 10px;
+        /* Añadido espacio entre columnas */
+    }
 }
