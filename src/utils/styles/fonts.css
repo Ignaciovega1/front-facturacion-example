@@ -5,8 +5,8 @@ body {
 }
 
 :root {
-    --box-color: #F5F5F5;
-    --text-color: #0E3748;
+    --box-color: #219EBC;
+    --text-color: #ffffff;
     --bg-method-color: #C9C9C9;
     --bg-method-color-opaco: rgba(255, 255, 255, 0.199);
     --bg-method-color-hover: #219ebc;

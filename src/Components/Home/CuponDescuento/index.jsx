@@ -24,7 +24,7 @@ export default function CuponDescuento({ onCuponSubmit }) {
 
     return (
         <div className="d-flex flex-column mx-4">
-            <p className="">
+            <p className="text-light">
                 ¿Tienes cupón de descuento?{" "}
                 <span
                     className="cupon-link"

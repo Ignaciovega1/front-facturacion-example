@@ -40,7 +40,7 @@ const SelectServicio = ({ onToggleService, selectedServices }) => {
                 <BsBagPlus className="" style={{ width: '3em', height: '3em' }} />
                 <p className='text-center d-flex justify-content-center align-items-center'>Servicios Adicionales</p>
             </div>
-            <div className="detalleHotelContent d-flex flex-column mx-3">
+            <div className="detalleHotelContent d-flex flex-column mx-3 text-light">
                 {serviciosAdicionales.map(servicio => (
                     <div
                         key={servicio.id}

@@ -27,7 +27,7 @@ export default function DetalleHospedaje({ detalleJson }) {
                 <LuHotel className="" style={{ width: '3em', height: '3em' }} />
                 <p className='text-center d-flex justify-content-center align-items-center'> Detalles del hospedaje </p>
             </div>
-            <div className="detalleHotelContent d-flex flex-column mx-3">
+            <div className="detalleHotelContent d-flex flex-column mx-3 text-light">
                 <p className='h3'>{DetalleHotel.NombreHotel} </p>
                 <div className="Estrellas h2 d-flex justify-content-start">
                     {renderStars(DetalleHotel.ValoracionHotel)}
