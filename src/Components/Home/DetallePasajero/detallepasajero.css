@@ -104,7 +104,7 @@ Form .botones .confirmButton {
 
 
 .detallePasajeroTitle p {
-    padding-left: 1rem;
+    padding-left: 0.7rem;
     display: flex;
     justify-items: center;
     align-items: center;
@@ -174,4 +174,13 @@ Form .botones .confirmButton {
 
 .edit:hover {
     cursor: pointer;
+}
+
+@media (max-width: 500px) {
+
+    .detallePasajeroTitle p {
+        padding-left: 0rem;
+
+
+    }
 }
