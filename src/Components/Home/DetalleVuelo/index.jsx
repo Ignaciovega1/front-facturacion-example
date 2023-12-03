@@ -23,10 +23,10 @@ export default function DetalleCompra({ detalleJson }) {
     return (
         <div className="box">
             <div className="d-flex flex-row gap-1 detallePasajeroTitle mt-2 my-4">
-                <CiAirportSign1 className="mx-2" style={{ width: '4em', height: '4em' }} />
+                <CiAirportSign1 className="mx-2 text-light" style={{ width: '4em', height: '4em' }} />
                 <p> Detalle del vuelo </p>
             </div>
-            <div className="detalleHotelContent h4 d-flex flex-column mx-3 text-center align-content-center">
+            <div className="detalleHotelContent h4 d-flex flex-column mx-3 text-center align-content-center text-light">
                 <div className="mb-4">
                     <div className="row align-items-center">
                         <div className="col-auto text-center">

@@ -42,7 +42,7 @@ export default function MetodosDePago({ onMetodoChange, onCuponSubmit }) {
                             <p className='txt-color'>{"Seleccione un método de pago"}</p>
                         </span>
                     ) : (
-                        <span className='d-flex flex-row title-text '>
+                        <span className='d-flex flex-row title-text'>
                             <p className=''>{`Ha seleccionado`}</p>
                             <p className='txt-white'>{`${selectedMetodo.toUpperCase()}`} </p>
                         </span>
