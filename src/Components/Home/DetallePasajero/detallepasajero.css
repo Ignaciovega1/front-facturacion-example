@@ -183,4 +183,10 @@ Form .botones .confirmButton {
 
 
     }
+
+    Form .botones button {
+
+        padding: 0;
+
+    }
 }

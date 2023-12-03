@@ -38,17 +38,17 @@ export default function DetalleHospedaje({ detalleJson }) {
                 </div>
                 <div className="h3 d-flex flex-row gap-2 py-1 justify-content-between">
                     <p className='py-1'> Check-in </p>
-                    <p className='hotel__field py-1 px-3'> {formatearFecha(DetallePaquete.FechaInicio)}</p>
+                    <p className='text-dark hotel__field py-1 px-3'> {formatearFecha(DetallePaquete.FechaInicio)}</p>
                 </div>
                 <div className="h3 d-flex flex-row gap-2 py-1 justify-content-between">
                     <p className='py-1'> Check-out </p>
-                    <p className='hotel__field py-1 px-3'> {formatearFecha(DetallePaquete.FechaFin)}</p>
+                    <p className='text-dark hotel__field py-1 px-3'> {formatearFecha(DetallePaquete.FechaFin)}</p>
                 </div>
-                <div className="hotel__field d-flex justify-content-center h3">
+                <div className="text-dark hotel__field d-flex justify-content-center h3">
                     <p> {cantDias} días /</p>
                     <p> {cantNoches} noches</p>
                 </div>
-                <div className="hotel__field px-3 pt-3 h3 d-flex flex-row gap-2 py-1 justify-content-around">
+                <div className="text-dark hotel__field px-3 pt-3 h3 d-flex flex-row gap-2 py-1 justify-content-around">
                     <p> Cant. Personas </p>
                     <p> {DetallePaquete.TotalPersonas} </p>
                 </div>

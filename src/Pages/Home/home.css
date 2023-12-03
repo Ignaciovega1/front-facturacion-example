@@ -38,6 +38,12 @@
     gap: 2px;
 }
 
+.orange {
+
+    color: #FB8500;
+
+}
+
 @media (min-width: 768px) {
     .HomeColumn {
         width: 33.33%;
