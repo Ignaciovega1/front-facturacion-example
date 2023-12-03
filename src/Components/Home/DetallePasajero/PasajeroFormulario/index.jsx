@@ -100,7 +100,7 @@ const PasajeroFormulario = ({ numPasajeros, onFinalSubmit }) => {
                                 pattern={rutRegex.source}
                             />
 
-                            <label htmlFor={`correo-${index}`}>Correo</label>
+                            <label htmlFor={`correo-${index}`}>Correo electrónico</label>
                             <input
                                 type="email"
                                 id={`correo-${index}`}
@@ -112,7 +112,7 @@ const PasajeroFormulario = ({ numPasajeros, onFinalSubmit }) => {
                                 pattern={emailRegex.source}
                             />
 
-                            <label htmlFor={`numero-${index}`}>Número</label>
+                            <label htmlFor={`numero-${index}`}>Número telefónico</label>
                             <input
                                 type="text"
                                 id={`numero-${index}`}
