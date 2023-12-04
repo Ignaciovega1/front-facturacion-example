@@ -17,7 +17,7 @@ const reserva = {
             "OfertaVuelo": 0,
             "PrecioVuelo": 320,
             "NombrePaquete": "Paquete Buenos Aires a Puerto Iguazú",
-            "TotalPersonas": 3,
+            "TotalPersonas": 1,
             "DetallesPaquete": "Incluye vuelo y estancia en el Iguazú Falls Lodge",
             "DescripcionPaquete": "Viaje desde Buenos Aires a Puerto Iguazú",
             "NombreCiudadOrigen": "Concepción",

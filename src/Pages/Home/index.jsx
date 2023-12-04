@@ -37,6 +37,38 @@ export default function HomePage() {
 
     const [data, setData] = useState([]); // Data de la reserva
 
+
+    const apiUrl = import.meta.env.VITE_API_URL;
+
+    // Función para enviar datos al backend
+    const sendDataToBackend = () => {
+        const dataToSend = {
+            "orden_id": String(data[0].id),
+            "session_id": String(data[0].id_usuario),
+            "monto": data[0].total,
+            "url_retorno": `${apiUrl}/commit`
+        };
+        console.log(dataToSend)
+
+        // Realizar la solicitud POST al backend
+        fetch(`${apiUrl}/save-transaction`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(dataToSend),
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Respuesta del servidor:', data);
+                // Aquí puedes manejar la respuesta del servidor si es necesario
+            })
+            .catch(error => {
+                console.error('Error al enviar la transacción:', error);
+            });
+    };
+
+
     useEffect(() => {
         const handleBeforeUnload = (e) => {
             e.preventDefault();
@@ -82,6 +114,7 @@ export default function HomePage() {
             setIsMethod(false);
 
         } else {
+ 
             // Manejar el caso cuando hay un método seleccionado
             setIsMethod(true);
             setMetodoDePagoSeleccionado(metodo);
@@ -111,6 +144,16 @@ export default function HomePage() {
         setIsConfirmed(value);
     }
 
+
+    useEffect(() => {
+        if (data.length > 0) {
+            sendDataToBackend()
+            handleAcceptModal()
+            //setShowModal(true)
+        }
+    }, [data]);
+
+
     const handleConfirmed = () => {
         if (isConfirmed && isMethod) {
             const data = [
@@ -127,7 +170,9 @@ export default function HomePage() {
                 }
             ];
             setData(data);
-            setShowModal(true);
+            console.log("data!!!!!", data)
+            // sendDataToBackend();
+            // setShowModal(true)
         } else if (!isConfirmed && isMethod) {
             console.log('No se puede confirmar la compra falta confirmar pasajeros', isConfirmed, isMethod);
             // ModalErrorPasajeros();
@@ -156,7 +201,7 @@ export default function HomePage() {
         console.log("Botón Aceptar presionado");
         console.log("Debo tener un método POST que crea: ", data);
         if (metodoDePagoSeleccionado === 'webpay') {
-            window.location.href = 'http://localhost:3000/webpay';
+            window.location.href = 'http://localhost:8080';
         } else if (metodoDePagoSeleccionado === 'paypal') {
             window.location.href = 'http://localhost:3000/paypal';
         }
@@ -221,16 +266,8 @@ export default function HomePage() {
                     </div>
                 </div>
             </div>
-            <ModalComponent
-                title="Título del Modal"
-                show={showModal}
-                handleClose={() => setShowModal(false)}
-                handleAccept={handleAcceptModal}
-                bodyContent={modalContent}
-                closeButtonVariant="danger"
-                acceptButtonVariant="success"
-            />
         </>
+
     )
 
 }
